@@ -62,10 +62,9 @@ public class VisualNovel : MonoBehaviour
                 for(int i = 0; i<proflie.Length; ++i)
                 {
                     SetActiveObjects(proflie[i], false);
-                    if(proflie[i].CharacterSprite != null)
-                    {
+                   
                         proflie[i].CharacterSprite.gameObject.SetActive(false);
-                    }
+                   
                    
                 }
                 return true;
@@ -80,7 +79,12 @@ public class VisualNovel : MonoBehaviour
 
         currentDialogueIndex++;
         currentCharIndex = dialogues[currentDialogueIndex].CharacterNum;
-        proflie[currentCharIndex].CharacterSprite.sprite = proflie[currentCharIndex].CharacterEmotion[dialogues[currentDialogueIndex].Emotion];
+
+     
+            proflie[currentCharIndex].CharacterSprite.sprite = proflie[currentCharIndex].CharacterEmotion[dialogues[currentDialogueIndex].Emotion];
+     
+       
+      
 
         SetActiveObjects(proflie[currentCharIndex], true);
 
@@ -91,10 +95,9 @@ public class VisualNovel : MonoBehaviour
 
     private void SetActiveObjects(Proflie profiles , bool visable)
     {
-        if (profiles.CharacterSprite != null)
-        {
+       
             profiles.CharacterSprite.gameObject.SetActive(visable);
-        }
+       
         profiles.dialoguePanel.gameObject.SetActive(visable);
         profiles.nameText.gameObject.SetActive(visable);
         profiles.dialgoueText.gameObject.SetActive(visable);
