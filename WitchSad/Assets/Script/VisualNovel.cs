@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using DG.Tweening;
 
 
 public class VisualNovel : MonoBehaviour
@@ -15,7 +16,7 @@ public class VisualNovel : MonoBehaviour
     private bool isAuto = true;
     private int currentDialogueIndex = -1;
     private int currentCharIndex = 0;
-    private float typingspd = 0.1f;
+    private float typingspd = 0.03f;
     private bool isTyping = false;
 
     private void Awake()
@@ -61,7 +62,11 @@ public class VisualNovel : MonoBehaviour
                 for(int i = 0; i<proflie.Length; ++i)
                 {
                     SetActiveObjects(proflie[i], false);
-                    proflie[i].CharacterSprite.gameObject.SetActive(false);
+                    if(proflie[i].CharacterSprite != null)
+                    {
+                        proflie[i].CharacterSprite.gameObject.SetActive(false);
+                    }
+                   
                 }
                 return true;
             }
@@ -75,7 +80,7 @@ public class VisualNovel : MonoBehaviour
 
         currentDialogueIndex++;
         currentCharIndex = dialogues[currentDialogueIndex].CharacterNum;
-        proflie[currentCharIndex].CharacterSprite = proflie[currentCharIndex].CharacterEmotion[dialogues[currentDialogueIndex].Emotion];
+        proflie[currentCharIndex].CharacterSprite.sprite = proflie[currentCharIndex].CharacterEmotion[dialogues[currentDialogueIndex].Emotion];
 
         SetActiveObjects(proflie[currentCharIndex], true);
 
@@ -86,6 +91,10 @@ public class VisualNovel : MonoBehaviour
 
     private void SetActiveObjects(Proflie profiles , bool visable)
     {
+        if (profiles.CharacterSprite != null)
+        {
+            profiles.CharacterSprite.gameObject.SetActive(visable);
+        }
         profiles.dialoguePanel.gameObject.SetActive(visable);
         profiles.nameText.gameObject.SetActive(visable);
         profiles.dialgoueText.gameObject.SetActive(visable);
@@ -109,6 +118,9 @@ public class VisualNovel : MonoBehaviour
         isTyping = false;
         proflie[currentCharIndex].Arrow.gameObject.SetActive(true);
     }
+    
+
+   
 }
 
 [System.Serializable]
@@ -120,7 +132,7 @@ public struct Proflie
     [Header("캐릭터 메인 이미지")]
     public SpriteRenderer CharacterSprite;
     [Header("캐릭터 감정 모션")]
-    public SpriteRenderer[] CharacterEmotion;
+    public Sprite[] CharacterEmotion;
 
     [Header("대화창 이미지")]
     public Image dialoguePanel;
