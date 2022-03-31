@@ -29,6 +29,7 @@ public class VisualNovel : MonoBehaviour
         for(int i = 0; i<proflie.Length; ++i)
         {
             SetActiveObjects(proflie[i], false);
+
         }
 
     }
@@ -81,10 +82,15 @@ public class VisualNovel : MonoBehaviour
         currentCharIndex = dialogues[currentDialogueIndex].CharacterNum;
 
      
-            proflie[currentCharIndex].CharacterSprite.sprite = proflie[currentCharIndex].CharacterEmotion[dialogues[currentDialogueIndex].Emotion];
-     
+        proflie[currentCharIndex].CharacterSprite.sprite = proflie[currentCharIndex].CharacterEmotion[dialogues[currentDialogueIndex].Emotion];
+        if (currentDialogueIndex != 0)
+        {
+            if (proflie[currentCharIndex].CharacterSprite.sprite != proflie[dialogues[currentDialogueIndex - 1].CharacterNum].CharacterSprite.sprite)
+            {
+                StartCoroutine("OnFade");
+            }
+        }
        
-      
 
         SetActiveObjects(proflie[currentCharIndex], true);
 
@@ -96,7 +102,7 @@ public class VisualNovel : MonoBehaviour
     private void SetActiveObjects(Proflie profiles , bool visable)
     {
        
-            profiles.CharacterSprite.gameObject.SetActive(visable);
+        profiles.CharacterSprite.gameObject.SetActive(visable);
        
         profiles.dialoguePanel.gameObject.SetActive(visable);
         profiles.nameText.gameObject.SetActive(visable);
@@ -122,6 +128,12 @@ public class VisualNovel : MonoBehaviour
         proflie[currentCharIndex].Arrow.gameObject.SetActive(true);
     }
     
+    IEnumerator OnFade()
+    {
+        proflie[currentCharIndex].CharacterSprite.DOFade(0f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        proflie[currentCharIndex].CharacterSprite.DOFade(1f, 0.5f);
+    }
 
    
 }
