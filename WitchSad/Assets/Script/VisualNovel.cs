@@ -103,6 +103,10 @@ public class VisualNovel : MonoBehaviour
     {
         if (visable == true)
         {
+            if (dialogues[currentDialogueIndex].angryEvent == true)
+            {
+                StartCoroutine(Shake());
+            }
             if (currentDialogueIndex == 0)
             {
                 profiles.CharacterSprite.color = profiles.CharacterSprite.color * new Color(1, 1, 1, 0);
@@ -173,6 +177,17 @@ public class VisualNovel : MonoBehaviour
             }
             }
         }
+
+    IEnumerator Shake()
+    {
+        for(int i = 0; i<10; i++)
+        {
+            proflie[currentCharIndex].CharacterSprite.transform.DOMove(new Vector3(proflie[currentCharIndex].CharacterSprite.transform.position.x+0.1f, proflie[currentCharIndex].CharacterSprite.transform.position.y, 0f), 0.05f, false);
+            yield return new WaitForSeconds(0.05f);
+            proflie[currentCharIndex].CharacterSprite.transform.DOMove(new Vector3(proflie[currentCharIndex].CharacterSprite.transform.position.x-0.1f, proflie[currentCharIndex].CharacterSprite.transform.position.y, 0f), 0.05f, false);
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
        
     }
  
@@ -211,6 +226,9 @@ public struct Dialogue
 
     [Header("해당 캐릭터 감정 고유번호")]
     public int Emotion;
+
+    [Header("화난 효과")]
+    public bool angryEvent;
 
     [Header("대화")]
     [TextArea(3, 5)]

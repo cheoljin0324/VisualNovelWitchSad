@@ -517,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1050246458
 Transform:
   m_ObjectHideFlags: 0
@@ -526,7 +526,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050246457}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -106, y: -413, z: -9720}
+  m_LocalPosition: {x: -162, y: -413, z: -9720}
   m_LocalScale: {x: 60.844677, y: 60.844677, z: 60.844677}
   m_Children: []
   m_Father: {fileID: 1246673440}
@@ -818,12 +818,15 @@ MonoBehaviour:
   dialogues:
   - CharacterNum: 0
     Emotion: 0
+    angryEvent: 1
     DialogueComData: "\uC548\uB155..?"
   - CharacterNum: 1
     Emotion: 0
+    angryEvent: 0
     DialogueComData: "\uB9CC\uB098\uC11C \uBC18\uAC00\uC6CC"
   - CharacterNum: 1
     Emotion: 0
+    angryEvent: 1
     DialogueComData: "\uD63C\uC7A3\uB9D0"
 --- !u!4 &1356927213
 Transform:
