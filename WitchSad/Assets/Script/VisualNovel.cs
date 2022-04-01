@@ -46,6 +46,11 @@ public class VisualNovel : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if(currentDialogueIndex<dialogues.Length&&proflie[dialogues[currentDialogueIndex].CharacterNum].CharacterSprite.sprite != proflie[dialogues[currentDialogueIndex + 1].CharacterNum].CharacterSprite.sprite)
+            {
+                isAnimation = true;
+            }
+
             if (isTyping == true)
             {
                 isTyping = false;
@@ -58,7 +63,6 @@ public class VisualNovel : MonoBehaviour
             if (dialogues.Length > currentDialogueIndex + 1)
             {
                 SetNextDialog();
-                isAnimation = true;
             }
             else
             {
@@ -100,12 +104,12 @@ public class VisualNovel : MonoBehaviour
                 profiles.CharacterSprite.color = profiles.CharacterSprite.color * new Color(1, 1, 1, 0);
                 profiles.CharacterSprite.DOFade(1f, 0.2f);
             }
-            else if (profiles.CharacterSprite == proflie[dialogues[currentDialogueIndex - 1].CharacterNum].CharacterSprite.sprite)
+            else if (profiles.CharacterSprite == proflie[dialogues[currentDialogueIndex].CharacterNum].CharacterSprite.sprite)
             {
                 profiles.CharacterSprite.color = profiles.CharacterSprite.color * new Color(1, 1, 1, 0);
                 profiles.CharacterSprite.DOFade(1f, 0.2f);
             }
-                FalseOb(profiles, visable);
+                StartCoroutine(FalseOb(profiles, visable));
         }
 
 
@@ -115,7 +119,8 @@ public class VisualNovel : MonoBehaviour
             {
                 profiles.CharacterSprite.DOFade(0f, 0.2f);
             }
-                  
+            StartCoroutine(FalseOb(profiles, visable));
+
         }
 
         profiles.dialoguePanel.gameObject.SetActive(visable);
@@ -150,13 +155,18 @@ public class VisualNovel : MonoBehaviour
         {
             profiles.CharacterSprite.gameObject.SetActive(visable);
         }
-        if(visable == false)
+        else if(visable == false)
         {
             if (isAnimation == true)
             {
                 yield return new WaitForSeconds(0.4f);
+                isAnimation = false;
+                profiles.CharacterSprite.gameObject.SetActive(visable);
             }
-            profiles.CharacterSprite.gameObject.SetActive(visable);
+            else
+            {
+                profiles.CharacterSprite.gameObject.SetActive(visable);
+            }
             }
         }
        
