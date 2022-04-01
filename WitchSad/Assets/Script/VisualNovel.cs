@@ -46,9 +46,13 @@ public class VisualNovel : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if(currentDialogueIndex<dialogues.Length&&proflie[dialogues[currentDialogueIndex].CharacterNum].CharacterSprite.sprite != proflie[dialogues[currentDialogueIndex + 1].CharacterNum].CharacterSprite.sprite)
+            if (currentDialogueIndex+1 > dialogues.Length)
+            {
+               if (currentDialogueIndex <= dialogues.Length&&proflie[dialogues[currentDialogueIndex].CharacterNum].CharacterSprite.sprite != proflie[dialogues[currentDialogueIndex + 1].CharacterNum].CharacterSprite.sprite)
             {
                 isAnimation = true;
+            }
+
             }
 
             if (isTyping == true)
@@ -102,12 +106,12 @@ public class VisualNovel : MonoBehaviour
             if (currentDialogueIndex == 0)
             {
                 profiles.CharacterSprite.color = profiles.CharacterSprite.color * new Color(1, 1, 1, 0);
-                profiles.CharacterSprite.DOFade(1f, 0.2f);
+                profiles.CharacterSprite.DOFade(1f, 1f);
             }
-            else if (profiles.CharacterSprite == proflie[dialogues[currentDialogueIndex].CharacterNum].CharacterSprite.sprite)
+            else if (profiles.CharacterSprite.sprite != proflie[dialogues[currentDialogueIndex-1].CharacterNum].CharacterSprite.sprite)
             {
                 profiles.CharacterSprite.color = profiles.CharacterSprite.color * new Color(1, 1, 1, 0);
-                profiles.CharacterSprite.DOFade(1f, 0.2f);
+                profiles.CharacterSprite.DOFade(1f, 1f);
             }
                 StartCoroutine(FalseOb(profiles, visable));
         }
