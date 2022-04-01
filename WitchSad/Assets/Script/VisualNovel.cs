@@ -18,7 +18,7 @@ public class VisualNovel : MonoBehaviour
     private int currentCharIndex = 0;
     private float typingspd = 0.03f;
     private bool isTyping = false;
-    private bool isSetUp = false;
+    private bool isAnimation = false;
 
     private void Awake()
     {
@@ -36,6 +36,7 @@ public class VisualNovel : MonoBehaviour
 
     public bool UpdateDialog()
     {
+       
         if(isFirst == true)
         {
             Setup();
@@ -45,7 +46,7 @@ public class VisualNovel : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if(isTyping == true)
+            if (isTyping == true)
             {
                 isTyping = false;
 
@@ -57,6 +58,7 @@ public class VisualNovel : MonoBehaviour
             if (dialogues.Length > currentDialogueIndex + 1)
             {
                 SetNextDialog();
+                isAnimation = true;
             }
             else
             {
@@ -93,13 +95,27 @@ public class VisualNovel : MonoBehaviour
     {
         if (visable == true)
         {
+            if (currentDialogueIndex == 0)
+            {
+                profiles.CharacterSprite.color = profiles.CharacterSprite.color * new Color(1, 1, 1, 0);
                 profiles.CharacterSprite.DOFade(1f, 0.2f);
-                StartCoroutine(FalseOb(profiles, visable));
+            }
+            else if (profiles.CharacterSprite == proflie[dialogues[currentDialogueIndex - 1].CharacterNum].CharacterSprite.sprite)
+            {
+                profiles.CharacterSprite.color = profiles.CharacterSprite.color * new Color(1, 1, 1, 0);
+                profiles.CharacterSprite.DOFade(1f, 0.2f);
+            }
+                FalseOb(profiles, visable);
         }
+
+
         else if(visable == false)
         {
+            if (isAnimation == true)
+            {
                 profiles.CharacterSprite.DOFade(0f, 0.2f);
-                StartCoroutine(FalseOb(profiles, visable));
+            }
+                  
         }
 
         profiles.dialoguePanel.gameObject.SetActive(visable);
@@ -114,38 +130,41 @@ public class VisualNovel : MonoBehaviour
         int index = 0;
 
         isTyping = true;
+
+        WaitForSeconds waitForSeconds = new WaitForSeconds(typingspd);
         while (index < dialogues[currentDialogueIndex].DialogueComData.Length)
         {
             proflie[currentCharIndex].dialgoueText.text = dialogues[currentDialogueIndex].DialogueComData.Substring(0, index+1);
 
             index++;
 
-            yield return new WaitForSeconds(typingspd);
+            yield return waitForSeconds;
         }
         isTyping = false;
         proflie[currentCharIndex].Arrow.gameObject.SetActive(true);
     }
-    
-    IEnumerator Des(int i)
-    {
-        yield return new WaitForSeconds(0.2f);
-        proflie[i].CharacterSprite.gameObject.SetActive(false);
-    }
 
     IEnumerator FalseOb(Proflie profiles,bool visable)
     {
-        if (visable == true)
+        if(visable == true)
         {
-            profiles.CharacterSprite.DOFade(1f,0.2f);
+            profiles.CharacterSprite.gameObject.SetActive(visable);
         }
-
-        yield return new WaitForSeconds(0.4f);
-        profiles.CharacterSprite.gameObject.SetActive(visable);
+        if(visable == false)
+        {
+            if (isAnimation == true)
+            {
+                yield return new WaitForSeconds(0.4f);
+            }
+            profiles.CharacterSprite.gameObject.SetActive(visable);
+            }
+        }
+       
     }
  
 
    
-}
+
 
 [System.Serializable]
 public struct Proflie
