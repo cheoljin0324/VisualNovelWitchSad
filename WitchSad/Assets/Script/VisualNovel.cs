@@ -11,14 +11,20 @@ public class VisualNovel : MonoBehaviour
     private Proflie[] proflie;
     [SerializeField]
     private Dialogue[] dialogues;
+    [SerializeField]
+    private Sprite[] backGroundClip;
+    [SerializeField]
+    private SpriteRenderer backSpriteRenderer;
 
     private bool isFirst = true;
     private bool isAuto = true;
     private int currentDialogueIndex = -1;
     private int currentCharIndex = 0;
+    private int currentBack = 0;
     private float typingspd = 0.03f;
     private bool isTyping = false;
     private bool isAnimation = false;
+    private bool isDialStart = true;
 
     private void Awake()
     {
@@ -82,13 +88,13 @@ public class VisualNovel : MonoBehaviour
     }
 
     public void SetNextDialog()
-    {
+    {  
+
         SetActiveObjects(proflie[currentCharIndex], false);
 
         currentDialogueIndex++;
         currentCharIndex = dialogues[currentDialogueIndex].CharacterNum;
 
-     
         proflie[currentCharIndex].CharacterSprite.sprite = proflie[currentCharIndex].CharacterEmotion[dialogues[currentDialogueIndex].Emotion];
        
 
@@ -101,6 +107,7 @@ public class VisualNovel : MonoBehaviour
 
     private void SetActiveObjects(Proflie profiles , bool visable)
     {
+
         if (visable == true)
         {
             if (dialogues[currentDialogueIndex].angryEvent == true)
@@ -117,7 +124,22 @@ public class VisualNovel : MonoBehaviour
                 profiles.CharacterSprite.color = profiles.CharacterSprite.color * new Color(1, 1, 1, 0);
                 profiles.CharacterSprite.DOFade(1f, 1f);
             }
-                StartCoroutine(FalseOb(profiles, visable));
+
+            if (isDialStart == true)
+            {
+                currentBack = dialogues[currentDialogueIndex].backGround;
+                backSpriteRenderer.sprite = backGroundClip[currentBack];
+
+                isDialStart = false;
+            }
+
+            if (currentBack != dialogues[currentDialogueIndex].backGround)
+            {
+                currentBack = dialogues[currentDialogueIndex].backGround;
+                backSpriteRenderer.sprite = backGroundClip[currentBack];
+            }
+
+            StartCoroutine(FalseOb(profiles, visable));
         }
 
 
@@ -226,6 +248,9 @@ public struct Dialogue
 
     [Header("해당 캐릭터 감정 고유번호")]
     public int Emotion;
+
+    [Header("배경")]
+    public int backGround;
 
     [Header("화난 효과")]
     public bool angryEvent;

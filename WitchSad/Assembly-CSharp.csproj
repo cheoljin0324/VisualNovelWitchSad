@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Assets\Script\DialgoueManager.cs" />
     <Compile Include="Assets\Script\VisualNovel.cs" />
+    <Compile Include="Assets\Script\AudioManager.cs" />
+    <Compile Include="Assets\Script\FadeObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
