@@ -16,6 +16,7 @@ public class VisualNovel : MonoBehaviour
     [SerializeField]
     private SpriteRenderer backSpriteRenderer;
 
+    private string name = "응애";
     private bool isFirst = true;
     private bool isAuto = true;
     private int currentDialogueIndex = -1;
@@ -93,6 +94,7 @@ public class VisualNovel : MonoBehaviour
         SetActiveObjects(proflie[currentCharIndex], false);
 
         currentDialogueIndex++;
+        dialogues[currentDialogueIndex].DialogueComData = dialogues[currentDialogueIndex].DialogueComData.Replace("/플레이어/", name);
         currentCharIndex = dialogues[currentDialogueIndex].CharacterNum;
 
         proflie[currentCharIndex].CharacterSprite.sprite = proflie[currentCharIndex].CharacterEmotion[dialogues[currentDialogueIndex].Emotion];

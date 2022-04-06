@@ -505,8 +505,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -553, y: -302}
-  m_SizeDelta: {x: 368.34, y: 141.49}
+  m_AnchoredPosition: {x: -108.09, y: -302}
+  m_SizeDelta: {x: 1258.2, y: 141.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &634885605
 GameObject:
@@ -1046,7 +1046,7 @@ MonoBehaviour:
     Emotion: 0
     backGround: 0
     angryEvent: 1
-    DialogueComData: "\uC548\uB155..?"
+    DialogueComData: "\u3147\u3134\u3147\u3141\u3147\u3141/\uD50C\uB808\uC774\uC5B4/"
   - CharacterNum: 1
     Emotion: 0
     backGround: 0
