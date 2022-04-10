@@ -11,6 +11,10 @@ public class DialgoueManager : MonoBehaviour
     private AudioManager audioGate;
     [SerializeField]
     private FadeObject FadeInOut;
+    [SerializeField]
+    private AudioSource audioBGM;
+    [SerializeField]
+    private AudioClip[] bgmClip;
 
     private IEnumerator Start()
     {
