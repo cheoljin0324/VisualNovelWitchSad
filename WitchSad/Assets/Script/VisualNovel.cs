@@ -8,6 +8,8 @@ using DG.Tweening;
 public class VisualNovel : MonoBehaviour
 {
     [SerializeField]
+    private AudioSource voiceAudio;
+    [SerializeField]
     private Proflie[] proflie;
     [SerializeField]
     private Dialogue[] dialogues;
@@ -53,9 +55,10 @@ public class VisualNovel : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            voiceAudio.Stop();
             if (currentDialogueIndex+1 > dialogues.Length)
             {
-               if (currentDialogueIndex <= dialogues.Length&&proflie[dialogues[currentDialogueIndex].CharacterNum].CharacterSprite.sprite != proflie[dialogues[currentDialogueIndex + 1].CharacterNum].CharacterSprite.sprite)
+                if (currentDialogueIndex <= dialogues.Length&&proflie[dialogues[currentDialogueIndex].CharacterNum].CharacterSprite.sprite != proflie[dialogues[currentDialogueIndex + 1].CharacterNum].CharacterSprite.sprite)
             {
                 isAnimation = true;
             }
@@ -99,7 +102,6 @@ public class VisualNovel : MonoBehaviour
 
         proflie[currentCharIndex].CharacterSprite.sprite = proflie[currentCharIndex].CharacterEmotion[dialogues[currentDialogueIndex].Emotion];
        
-
         SetActiveObjects(proflie[currentCharIndex], true);
 
         if (proflie[currentCharIndex].name=="/플레이어/")
@@ -116,6 +118,12 @@ public class VisualNovel : MonoBehaviour
 
         if (visable == true)
         {
+            if (dialogues[currentDialogueIndex].audioClip != null)
+            {
+                voiceAudio.clip = dialogues[currentDialogueIndex + 1].audioClip;
+                voiceAudio.Play();
+            }
+
             if (dialogues[currentDialogueIndex].angryEvent == true)
             {
                 StartCoroutine(Shake());
@@ -251,6 +259,9 @@ public struct Dialogue
 {
     [Header("사용 할 캐릭터 넘버즈")]
     public int CharacterNum;
+
+    [Header("더빙")]
+    public AudioClip audioClip;
 
     [Header("해당 캐릭터 감정 고유번호")]
     public int Emotion;
