@@ -102,6 +102,10 @@ public class VisualNovel : MonoBehaviour
 
         SetActiveObjects(proflie[currentCharIndex], true);
 
+        if (proflie[currentCharIndex].name=="/플레이어/")
+        {
+            proflie[currentCharIndex].name = name;
+        }
         proflie[currentCharIndex].nameText.text = proflie[currentCharIndex].name;
         proflie[currentCharIndex].dialgoueText.text = dialogues[currentDialogueIndex].DialogueComData;
         StartCoroutine("Ontyping");
