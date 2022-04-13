@@ -3,12 +3,17 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Video;
 
 
 public class VisualNovel : MonoBehaviour
 {
     [SerializeField]
     private AudioSource voiceAudio;
+    [SerializeField]
+    private VideoPlayer videoPlayer;
+    [SerializeField]
+    private SpriteRenderer videoObject;
     [SerializeField]
     private Proflie[] proflie;
     [SerializeField]
@@ -122,6 +127,28 @@ public class VisualNovel : MonoBehaviour
             {
                 voiceAudio.clip = dialogues[currentDialogueIndex + 1].audioClip;
                 voiceAudio.Play();
+            }
+
+            if(dialogues[currentDialogueIndex].onVideo == true)
+            {
+                videoObject.gameObject.SetActive(true);
+                if(dialogues[currentDialogueIndex].onVideo == false)
+                {
+                    videoPlayer.clip = dialogues[currentDialogueIndex].useVideo;
+                    videoPlayer.Play();
+                }
+                else if(dialogues[currentDialogueIndex-1].useVideo != dialogues[currentDialogueIndex].useVideo)
+                {
+                    videoPlayer.clip = dialogues[currentDialogueIndex].useVideo;
+                    videoPlayer.Play();
+                }
+            }
+
+            if (dialogues[currentDialogueIndex].onVideo == false)
+            {
+                videoPlayer.Stop();
+                videoObject.gameObject.SetActive(false);
+                
             }
 
             if (dialogues[currentDialogueIndex].angryEvent == true)
@@ -259,6 +286,12 @@ public struct Dialogue
 {
     [Header("사용 할 캐릭터 넘버즈")]
     public int CharacterNum;
+
+    [Header("영상 사용여부")]
+    public bool onVideo;
+
+    [Header("사용할 비디오")]
+    public VideoClip useVideo;
 
     [Header("더빙")]
     public AudioClip audioClip;
