@@ -10,9 +10,10 @@ public class DialgoueManager : MonoBehaviour
     [SerializeField]
     private AudioManager audioGate;
     [SerializeField]
-    private FadeObject FadeInOut;
+    private SelectScreen selecT;
     [SerializeField]
-    private AudioSource audioBGM;
+    private FadeObject FadeInOut;
+
     [SerializeField]
     private AudioClip[] bgmClip;
 
@@ -22,6 +23,8 @@ public class DialgoueManager : MonoBehaviour
         audioGate.audioPlayer.Play();
 
         yield return new WaitUntil(()=>vinovel[0].UpdateDialog());
+
+        yield return new WaitUntil(() => selecT.InstButton());
 
         FadeInOut.Fade();
         yield return new WaitForSeconds(1.2f);
