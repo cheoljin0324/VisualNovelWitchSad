@@ -357,7 +357,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &328553891
 GameObject:
@@ -441,7 +441,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 328553894}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 500183029}
+        m_TargetAssemblyTypeName: SelectScreen, Assembly-CSharp
+        m_MethodName: SetT
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &328553894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,7 +572,7 @@ Transform:
   m_LocalScale: {x: 17.79647, y: 10.127614, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &470522327
 GameObject:
@@ -657,7 +669,7 @@ RectTransform:
   - {fileID: 1766833181}
   - {fileID: 1367779719}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -693,10 +705,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3141f289459b6549b08dd037f1b6a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inSelect: 0
+  SelectNum: 0
   selectionText:
   - 1
   - 2
-  - 3
   buttonGroup:
   - {fileID: 1522093683}
   - {fileID: 1766833180}
@@ -722,7 +735,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -955,7 +968,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 595664647}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 500183029}
+        m_TargetAssemblyTypeName: SelectScreen, Assembly-CSharp
+        m_MethodName: SetF
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &595664647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,6 +1019,97 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595664644}
   m_CullTransparentMesh: 1
+--- !u!1 &610387494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 610387496}
+  - component: {fileID: 610387495}
+  m_Layer: 0
+  m_Name: GameObject (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &610387495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610387494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b36ecb8f0541814c9516c302888b93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceAudio: {fileID: 1472450810}
+  videoPlayer: {fileID: 1525611873}
+  videoObject: {fileID: 370101300}
+  proflie:
+  - name: "/\uD50C\uB808\uC774\uC5B4/"
+    CharacterSprite: {fileID: 868769005}
+    CharacterEmotion:
+    - {fileID: 0}
+    dialoguePanel: {fileID: 1543113789}
+    nameText: {fileID: 1102908593}
+    dialgoueText: {fileID: 621833288}
+    Arrow: {fileID: 30137358}
+  - name: "\uB9C8\uB140 \uC544\uB2D8"
+    CharacterSprite: {fileID: 1863016254}
+    CharacterEmotion:
+    - {fileID: 21300000, guid: 187cbd4826bf4be41b26591270c1ffc9, type: 3}
+    dialoguePanel: {fileID: 1543113789}
+    nameText: {fileID: 1102908593}
+    dialgoueText: {fileID: 621833288}
+    Arrow: {fileID: 30137358}
+  dialogues:
+  - CharacterNum: 0
+    onVideo: 0
+    useVideo: {fileID: 0}
+    audioClip: {fileID: 0}
+    Emotion: 0
+    backGround: 0
+    angryEvent: 1
+    DialogueComData: "\u3147\u3134\u3147\u3141\u3147/\uD50C\uB808\uC774\uC5B4/"
+  - CharacterNum: 1
+    onVideo: 1
+    useVideo: {fileID: 0}
+    audioClip: {fileID: 0}
+    Emotion: 0
+    backGround: 0
+    angryEvent: 0
+    DialogueComData: ' q'
+  - CharacterNum: 1
+    onVideo: 0
+    useVideo: {fileID: 0}
+    audioClip: {fileID: 0}
+    Emotion: 0
+    backGround: 0
+    angryEvent: 1
+    DialogueComData: "\uD63C\uC7A3\uB9D0"
+  backGroundClip:
+  - {fileID: 21300000, guid: 1c27198dbf0d6344880c298334bca45d, type: 3}
+  backSpriteRenderer: {fileID: 288750160}
+--- !u!4 &610387496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610387494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0032873, y: 1.4966753, z: -41.212635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &621833287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1346,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 686858521}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 500183029}
+        m_TargetAssemblyTypeName: SelectScreen, Assembly-CSharp
+        m_MethodName: SetF
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &686858521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,7 +1539,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &769416368
 GameObject:
@@ -1572,7 +1700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &922290111
 GameObject:
@@ -1669,7 +1797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1050246458
 Transform:
   m_ObjectHideFlags: 0
@@ -1896,7 +2024,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1216246106}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 500183029}
+        m_TargetAssemblyTypeName: SelectScreen, Assembly-CSharp
+        m_MethodName: SetS
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1216246106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2017,7 +2157,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1236772220}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 500183029}
+        m_TargetAssemblyTypeName: SelectScreen, Assembly-CSharp
+        m_MethodName: SetF
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1236772220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2495,7 +2647,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1522093683
 GameObject:
@@ -2597,7 +2749,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1530204796
 GameObject:
@@ -2835,7 +2987,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1588245138}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 500183029}
+        m_TargetAssemblyTypeName: SelectScreen, Assembly-CSharp
+        m_MethodName: SetS
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1588245138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2905,7 +3069,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vinovel:
   - {fileID: 1356927212}
-  - {fileID: 2133268138}
+  - {fileID: 1998495148}
+  - {fileID: 610387495}
   audioGate: {fileID: 757022141}
   selecT: {fileID: 500183029}
   FadeInOut: {fileID: 1960192764}
@@ -2922,7 +3087,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1766833180
 GameObject:
@@ -3168,7 +3333,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1906781623
 GameObject:
@@ -3342,9 +3507,9 @@ Transform:
   m_LocalScale: {x: 17.794104, y: 9.960046, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2133268137
+--- !u!1 &1998495147
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3352,8 +3517,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2133268139}
-  - component: {fileID: 2133268138}
+  - component: {fileID: 1998495149}
+  - component: {fileID: 1998495148}
   m_Layer: 0
   m_Name: GameObject (2)
   m_TagString: Untagged
@@ -3361,27 +3526,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2133268138
+--- !u!114 &1998495148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133268137}
+  m_GameObject: {fileID: 1998495147}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b36ecb8f0541814c9516c302888b93c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voiceAudio: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  videoObject: {fileID: 0}
+  voiceAudio: {fileID: 1472450810}
+  videoPlayer: {fileID: 1525611873}
+  videoObject: {fileID: 370101300}
   proflie:
-  - name: "\uB9C8\uB140"
-    CharacterSprite: {fileID: 1050246459}
+  - name: "/\uD50C\uB808\uC774\uC5B4/"
+    CharacterSprite: {fileID: 868769005}
     CharacterEmotion:
-    - {fileID: 21300000, guid: 95c9f1e116eb8d9408f5dd260c269c3a, type: 3}
-    - {fileID: 21300000, guid: 187cbd4826bf4be41b26591270c1ffc9, type: 3}
+    - {fileID: 0}
     dialoguePanel: {fileID: 1543113789}
     nameText: {fileID: 1102908593}
     dialgoueText: {fileID: 621833288}
@@ -3402,15 +3566,15 @@ MonoBehaviour:
     Emotion: 0
     backGround: 0
     angryEvent: 1
-    DialogueComData: "\uC640 \uC0CC\uC988"
+    DialogueComData: "\u3147\u3134\u3147\u3141\u3147/\uD50C\uB808\uC774\uC5B4/"
   - CharacterNum: 1
-    onVideo: 0
+    onVideo: 1
     useVideo: {fileID: 0}
     audioClip: {fileID: 0}
     Emotion: 0
     backGround: 0
     angryEvent: 0
-    DialogueComData: "\uC774\uAC74 \uD14C\uC2A4\uD2B8"
+    DialogueComData: "\uB9CC\uB098\uC11C "
   - CharacterNum: 1
     onVideo: 0
     useVideo: {fileID: 0}
@@ -3420,19 +3584,19 @@ MonoBehaviour:
     angryEvent: 1
     DialogueComData: "\uD63C\uC7A3\uB9D0"
   backGroundClip:
-  - {fileID: 21300000, guid: 40bd31ced3959ec48b95b89ab94b148a, type: 3}
+  - {fileID: 21300000, guid: 1c27198dbf0d6344880c298334bca45d, type: 3}
   backSpriteRenderer: {fileID: 288750160}
---- !u!4 &2133268139
+--- !u!4 &1998495149
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133268137}
+  m_GameObject: {fileID: 1998495147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.0032873, y: 1.4966753, z: -41.212635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

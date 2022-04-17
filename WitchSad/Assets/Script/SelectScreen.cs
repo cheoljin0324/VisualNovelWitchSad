@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class SelectScreen : MonoBehaviour
 {
+
+    public bool inSelect=false;
+    public int SelectNum;
+
     [Header("선택지")]
     public string[] selectionText;
 
@@ -26,28 +30,23 @@ public class SelectScreen : MonoBehaviour
     //몇번째 선택지 인가?
     private int currentSelectNum=0;
 
-    public bool InstButton()
+    public void InstButton()
     {
         if (selectionText.Length == 1)
         {
             buttonGroup[0].gameObject.SetActive(true);
             SelectionSet(1);
-            return true;
         }
         else if (selectionText.Length == 2)
         {
             buttonGroup[1].gameObject.SetActive(true);
             SelectionSet(2);
-            return true;
         }
         else if (selectionText.Length == 3)
         {
             buttonGroup[2].gameObject.SetActive(true);
             SelectionSet(3);
-            return true;
         }
-
-        return false;
     }
 
     private void SelectionSet(int selectNum)
@@ -69,26 +68,72 @@ public class SelectScreen : MonoBehaviour
         }
     }
 
-    public int SetF()
+    public void SetF()
     {
-        return 1;
+        inSelect = true;
+        Debug.Log(1);
+        if (selectionText.Length == 1)
+        {
+            buttonGroup[0].gameObject.SetActive(false);
+
+        }
+        else if (selectionText.Length == 2)
+        {
+            buttonGroup[1].gameObject.SetActive(false);
+
+        }
+        else if (selectionText.Length == 3)
+        {
+            buttonGroup[2].gameObject.SetActive(false);
+
+        }
+        SelectNum = 1;
     }
     
-    public int SetS()
+    public void SetS()
     {
-        return 2;
+        inSelect = true;
+        Debug.Log(1);
+        if (selectionText.Length == 1)
+        {
+            buttonGroup[0].gameObject.SetActive(false);
+
+        }
+        else if (selectionText.Length == 2)
+        {
+            buttonGroup[1].gameObject.SetActive(false);
+
+        }
+        else if (selectionText.Length == 3)
+        {
+            buttonGroup[2].gameObject.SetActive(false);
+
+        }
+        SelectNum = 2;
     }
 
-    public int SetT()
+    public void SetT()
     {
-        return 3;
+        inSelect = true;
+        Debug.Log(1);
+        if (selectionText.Length == 1)
+        {
+            buttonGroup[0].gameObject.SetActive(false);
+
+        }
+        else if (selectionText.Length == 2)
+        {
+            buttonGroup[1].gameObject.SetActive(false);
+
+        }
+        else if (selectionText.Length == 3)
+        {
+            buttonGroup[2].gameObject.SetActive(false);
+
+        }
+        SelectNum = 3;
     }
 
 
 }
 
-public struct Selection
-{
-
-
-}

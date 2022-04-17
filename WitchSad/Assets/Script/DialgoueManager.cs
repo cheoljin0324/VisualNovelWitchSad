@@ -24,11 +24,19 @@ public class DialgoueManager : MonoBehaviour
 
         yield return new WaitUntil(()=>vinovel[0].UpdateDialog());
 
-        yield return new WaitUntil(() => selecT.InstButton());
+        selecT.InstButton();
+        yield return new WaitUntil(() => selecT.inSelect==true);
 
         FadeInOut.Fade();
         yield return new WaitForSeconds(1.2f);
 
-        yield return new WaitUntil(() => vinovel[1].UpdateDialog());
+        if (selecT.SelectNum == 1)
+        {
+            yield return new WaitUntil(() => vinovel[1].UpdateDialog());
+        }
+        else if(selecT.SelectNum == 2)
+        {
+            yield return new WaitUntil(() => vinovel[2].UpdateDialog());
+        }
     }
 }
